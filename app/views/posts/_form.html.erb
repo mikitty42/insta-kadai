@@ -17,6 +17,12 @@
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
+  <div class='post_picture'>
+    <%= form.label :picture %>
+    <%= image_tag(@post.picture.url) if @post.picture && @post.picture.url %>
+    <%= form.file_field :picture %>
+    <%= form.hidden_field :picture_cache %>
+  </div>
   <%= form.submit %>
 <% end %>
 <%= link_to "投稿一覧画面にもどる", posts_path %>
