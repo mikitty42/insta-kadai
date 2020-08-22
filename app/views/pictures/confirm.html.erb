@@ -1,8 +1,9 @@
 <h3>以下の内容で、送信する。</h3>
 <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+  <%= image_tag(@picture.picture.url) if @picture.picture && @picture.picture.url %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
-  <%= form.hidden_field :picture %>
+  <%= form.hidden_field :picture_cache %>
   <p>Title:<%= @picture.title %></p>
   <p>Content:<%= @picture.content %></p>
   <p>Picture:<%= @picture.picture %></p>

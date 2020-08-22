@@ -10,7 +10,7 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.build(picture_params)
     if params[:back]
       render :new
     else
@@ -23,7 +23,7 @@ class PicturesController < ApplicationController
   end
 
   def show
-    @picture = current_user.pictures.build(picture_params)
+    @favorite = current_user.favorites.find_by(picture_id: @picture.id)
   end
 
   def edit
@@ -41,7 +41,7 @@ class PicturesController < ApplicationController
   end
 
   def confirm
-    @picture = Picture.new
+    @picture = current_user.pictures.build(picture_params)
     render :new if @picture.invalid?
   end
 
@@ -51,7 +51,7 @@ class PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
   end
 
-  def set_picture
-    params.require(:picture).permit(:title,:content,:picture,:picture_cashe)
+  def picture_params
+    params.require(:picture).permit(:title,:content,:picture,:picture_cache)
   end
 end
