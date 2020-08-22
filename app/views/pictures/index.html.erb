@@ -1,0 +1,20 @@
+<h2>Post lists</h2>
+<%= notice %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Poster</th>
+  </tr>
+  <tr>
+<% @pictures.each do |picture| %>
+    <td><%= picture.title %></td>
+    <td><%= picture.content %></td>
+    <td><%= picture.user.name %></td>
+    <td><%= link_to 'Show',picture_path(picture.id) %></td>
+    <td><%= link_to 'Edit',edit_picture(picture.id) %></td>
+    <td><%= link_to 'Delete',picture_path(picture.id),.method: :delete,data: {confirm: 'Are you sure you want to delete it?'} %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'New Post',new_picture_path %>
