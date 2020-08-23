@@ -1,4 +1,3 @@
-<h2>Post lists</h2>
 <%= notice %>
 <table>
   <tr>
@@ -12,10 +11,7 @@
     <td><%= picture.content %></td>
     <td><%= picture.user.name %></td>
     <td><%= link_to 'Show',picture_path(picture.id) %></td>
-    <td><%= link_to 'Edit',edit_picture_path(picture.id) %></td>
-    <td><%= link_to 'Delete',picture_path(picture.id),method: :delete,data: {confirm: 'Are you sure you want to delete it?'} %></td>
   </tr>
 <% end %>
 </table>
-<%= link_to 'New Post',new_picture_path %>
-<%= link_to 'Favorite List',favorites_path %>
+<%= link_to 'New Post' ,new_picture_path %>
