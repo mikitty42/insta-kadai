@@ -58,7 +58,7 @@ class PicturesController < ApplicationController
   end
 
   def correct_user
-     if current_user.id !=  @picture.user.id
+     if current_user.id != @picture.user.id
        redirect_to pictures_path
      end
   end
