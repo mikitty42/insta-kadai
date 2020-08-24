@@ -12,7 +12,7 @@
     <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-<% if @picture.user.id == current_user.id %>
-  <%= link_to 'Edit',edit_picture_path(@picture.id) %>
-  <%= link_to 'Delete',picture_path(@picture.id),method: :delete,data: {confirm: 'Are you sure you want to delete it?'} %>
+<% if logged_in? && @picture.user_id == current_user.id %>
+  <%= link_to 'Edit',edit_picture_path(@picture.id),class:'btn btn-primary' %>
+  <%= link_to 'Delete',picture_path(@picture.id),method: :delete,data: {confirm: 'Are you sure you want to delete it?'},class: 'btn btn-primary' %>
 <% end %>
