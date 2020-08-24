@@ -7,7 +7,7 @@ class PicturesController < ApplicationController
   end
 
   def new
-    @picture = current_user.pictures.build
+    @picture = Picture.new
   end
 
   def create
@@ -32,7 +32,7 @@ class PicturesController < ApplicationController
   end
 
   def update
-    if @picture.save
+    if @picture.update(picture_params)
       redirect_to pictures_path,notice: 'Edited post'
     end
   end
@@ -55,5 +55,11 @@ class PicturesController < ApplicationController
 
   def picture_params
     params.require(:picture).permit(:title,:content,:picture,:picture_cache)
+  end
+
+  def correct_user
+     if current_user.id !=  @picture.user.id
+       redirect_to pictures_path
+     end
   end
 end
