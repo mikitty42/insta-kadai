@@ -9,6 +9,7 @@
     <td><%= picture.title %></td>
     <td><%= picture.content %></td>
     <td><%= picture.user.name %></td>
+    <td><%= image_tag picture.picture.url %></td>
     <td><%= link_to 'Show',picture_path(picture.id),class: 'btn btn-primary' %></td>
   </tr>
 <% end %>
