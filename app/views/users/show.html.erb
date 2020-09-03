@@ -4,7 +4,7 @@
   <strong>Image:</strong>
     <%= image_tag @user.image.url %>
 </p>
-<%= link_to 'Favorite List',favorites_path,class:'btn btn-primary' %>
 <% if logged_in? %>
+<%= link_to 'Favorite List',favorites_path,class:'btn btn-primary' %>
 <%= link_to 'Edit User',edit_user_path(@user.id),class: 'btn btn-primary' %>
 <% end %>
